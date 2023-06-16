@@ -18,6 +18,9 @@ function getInitials(name: string) {
 }
 
 function getColorByAlphabetChunk(name: Athlete['name']) {
+    // get the last name first letter
+    const parts = name.split(' ');
+    const lastNameFirstLetter = parts[parts.length - 1].charAt(0).toLowerCase();
     const alphabetChunks = [
         ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'],
         ['n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
@@ -36,10 +39,8 @@ function getColorByAlphabetChunk(name: Athlete['name']) {
         "#ffa94d"
     ];
 
-    const string = name.toLowerCase();
-
     for (let i = 0; i < alphabetChunks.length; i++) {
-        if (alphabetChunks[i].includes(string.charAt(0))) {
+        if (alphabetChunks[i].includes(lastNameFirstLetter)) {
             return colors[i];
         }
     }
@@ -54,7 +55,7 @@ function getColorByAlphabetChunk(name: Athlete['name']) {
             <div class="flex items-center h-full">
                 <div v-if="!athlete.profile_image" :style="{ backgroundColor: getColorByAlphabetChunk(athlete.name) }"
                     class="rounded-full flex justify-center items-center text-3xl overflow-hidden h-24 w-24">
-                    <span>{{ getInitials(athlete.name) }}</span>
+                    <span class="text-white">{{ getInitials(athlete.name) }}</span>
                 </div>
                 <div v-else class="rounded-full flex justify-center items-center text-3xl overflow-hidden h-24 w-24">
                     <img :src="athlete.profile_image" :alt="`${athlete.name} Profile Image`">
