@@ -30,19 +30,19 @@ function getInitials(name: string) {
             <!-- player meta data -->
             <div class="grid grid-cols-2 gap-1">
                 <!-- row 1 player name -->
-                <div class="col-span-2 text-[#09b4ff] text-[16px]/[16px] font-bold">{{ athlete.name }}</div>
+                <div class="col-span-2 text-[#09b4ff] text-xl font-bold">{{ athlete.name }}</div>
                 <!-- row 2 sport and high school -->
-                <div class="col-span-2 grid grid-cols-2 text-[12px]/[12px]">
+                <div class="col-span-2 grid grid-cols-2">
                     <div><span class="font-bold">Sport: </span>{{ athlete.sport }}</div>
                     <div><span class="font-bold">High School: </span>{{ athlete.high_school.name }}</div>
                 </div>
                 <!-- row 3 class and gpa -->
-                <div class="col-span-2 grid grid-cols-2 text-[12px]/[12px] justify-between">
+                <div class="col-span-2 grid grid-cols-2 justify-between">
                     <div><span class="font-bold">Class: </span>{{ athlete.grad_year }}</div>
                     <div><span class="font-bold">GPA: </span>{{ athlete.gpa }}</div>
                 </div>
                 <!-- row 4 club and desired major -->
-                <div class="col-span-2 grid grid-cols-2 text-[12px]/[12px] justify-between">
+                <div class="col-span-2 grid grid-cols-2 justify-between">
                     <div><span class="font-bold">Club: </span>{{ athlete.club.name }}</div>
                     <div><span class="font-bold">Desired Major: </span>{{ athlete.major }}</div>
                 </div>
