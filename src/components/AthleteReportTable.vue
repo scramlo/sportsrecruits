@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Athlete, Report } from '@/types';
+import UITableLoader from './ui/UITableLoader.vue';
 
 defineProps<{
     athlete: Athlete;
@@ -33,90 +34,98 @@ function getGpaColor(gpa: Athlete['gpa'], report: Report) {
 }
 </script>
 <template>
-    <section v-if="!loading && athlete" class="grid gap-16">
-        <table class="w-full table-auto text-[9px]/[9px]">
-            <tbody>
-                <tr class="bg-black text-white">
-                    <th>School Name</th>
-                    <th>Athletic Div</th>
-                    <th>Conference</th>
-                    <th>
-                        <span>Ranking*</span>
-                        <br>
-                        <span class="text-[8px]/[8px] font-normal">(DI NCAA)
+    <Transition name="fade" :appear="true" v-if="!loading && athlete">
+        <section class="grid gap-16">
+            <table class="w-full table-auto text-[9px]/[9px]">
+                <tbody>
+                    <tr class="bg-black text-white">
+                        <th>School Name</th>
+                        <th>Athletic Div</th>
+                        <th>Conference</th>
+                        <th>
+                            <span>Ranking*</span>
                             <br>
-                            (DII & DIII Hero Sports)
-                        </span>
-                    </th>
-                    <th colspan="5">GPA**</th>
-                    <th>
-                        <span>
-                            SAT Reading***<br>
-                            25%-75%
-                        </span>
-                    </th>
-                    <th>
-                        <span>
-                            SAT Math***<br>
-                            25%-75%
-                        </span>
-                    </th>
-                    <th>
-                        <span>
-                            ACT Composite***<br>
-                            25%-75%
-                        </span>
-                    </th>
-                </tr>
-                <tr class="text-white -translate-y-[10px]">
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th>Min</th>
-                    <th>25%</th>
-                    <th>50%</th>
-                    <th>75%</th>
-                    <th>Max</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr v-for="report in athlete.report" :key="report.school" class="striped">
-                    <td>{{ report.school }}</td>
-                    <td>{{ report.division }}</td>
-                    <td>{{ report.conference }}</td>
-                    <td class="text-center">{{ report.ranking }}</td>
-                    <td class="text-center">{{ report.gpa.min.toFixed(2) }}</td>
-                    <td class="text-center">{{ report.gpa['25%'].toFixed(2) }}</td>
-                    <td class="text-center" :style="{ backgroundColor: getGpaColor(athlete.gpa, report) }">
-                        {{ report.gpa['50%'].toFixed(2) }}
-                    </td>
-                    <td class="text-center">{{ report.gpa['75%'].toFixed(2) }}</td>
-                    <td class="text-center">{{ report.gpa.max.toFixed(2) }}</td>
-                    <td class="text-center">{{ report.sat.reading.min }}-{{ report.sat.reading.max }}</td>
-                    <td class="text-center">{{ report.sat.math.min }}-{{ report.sat.math.max }}</td>
-                    <td class="text-center">{{ report.act.min }}-{{ report.act.max }}</td>
-                </tr>
-            </tbody>
-        </table>
-        <div>
-            <p class="text-[10px]/[10px]">*Rankings for Division I schools based on NCAA data (www.ncaa.com) and rankings
-                for
-                Division
-                II
-                &amp; III schools are based on data from Hero Sports (www.herosports.com/rankings)</p>
-            <p class="text-[10px]/[10px]">** GPA is based on SportsRecruits members who have shown interest in (favorited)
-                the
-                school
-                and
-                have provided their
-                GPA on their profile</p>
-            <p class="text-[10px]/[10px]">***SAT and ACT scores based on national data provided by the National Center of
-                Education
-                Statistics- https://nces.ed.gov/ipeds/</p>
-        </div>
-    </section>
+                            <span class="text-[8px]/[8px] font-normal">(DI NCAA)
+                                <br>
+                                (DII & DIII Hero Sports)
+                            </span>
+                        </th>
+                        <th colspan="5">GPA**</th>
+                        <th>
+                            <span>
+                                SAT Reading***<br>
+                                25%-75%
+                            </span>
+                        </th>
+                        <th>
+                            <span>
+                                SAT Math***<br>
+                                25%-75%
+                            </span>
+                        </th>
+                        <th>
+                            <span>
+                                ACT Composite***<br>
+                                25%-75%
+                            </span>
+                        </th>
+                    </tr>
+                    <tr class="text-white -translate-y-[10px]">
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Min</th>
+                        <th>25%</th>
+                        <th>50%</th>
+                        <th>75%</th>
+                        <th>Max</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr v-for="report in athlete.report" :key="report.school" class="striped">
+                        <td>{{ report.school }}</td>
+                        <td>{{ report.division }}</td>
+                        <td>{{ report.conference }}</td>
+                        <td class="text-center">{{ report.ranking }}</td>
+                        <td class="text-center">{{ report.gpa.min.toFixed(2) }}</td>
+                        <td class="text-center">{{ report.gpa['25%'].toFixed(2) }}</td>
+                        <td class="text-center" :style="{ backgroundColor: getGpaColor(athlete.gpa, report) }">
+                            {{ report.gpa['50%'].toFixed(2) }}
+                        </td>
+                        <td class="text-center">{{ report.gpa['75%'].toFixed(2) }}</td>
+                        <td class="text-center">{{ report.gpa.max.toFixed(2) }}</td>
+                        <td class="text-center">{{ report.sat.reading.min }}-{{ report.sat.reading.max }}</td>
+                        <td class="text-center">{{ report.sat.math.min }}-{{ report.sat.math.max }}</td>
+                        <td class="text-center">{{ report.act.min }}-{{ report.act.max }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <p class="text-[10px]/[10px]">*Rankings for Division I schools based on NCAA data (www.ncaa.com) and
+                    rankings
+                    for
+                    Division
+                    II
+                    &amp; III schools are based on data from Hero Sports (www.herosports.com/rankings)</p>
+                <p class="text-[10px]/[10px]">** GPA is based on SportsRecruits members who have shown interest in
+                    (favorited)
+                    the
+                    school
+                    and
+                    have provided their
+                    GPA on their profile</p>
+                <p class="text-[10px]/[10px]">***SAT and ACT scores based on national data provided by the National Center
+                    of
+                    Education
+                    Statistics- https://nces.ed.gov/ipeds/</p>
+            </div>
+        </section>
+    </Transition>
+    <Transition name="fade" :appear="true" v-else>
+        <UITableLoader :cols="33" />
+    </Transition>
 </template>
 
 <style scoped>

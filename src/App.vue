@@ -16,8 +16,6 @@ const { loading, athletes } = useGetAthletes();
         <h1 class="text-[14px]/[14px]">Academic Fit Report</h1>
       </div>
     </header>
-    <Transition name="fade" :appear="true">
-      <AthleteReportTable :athlete="athletes[0]" :loading="loading" />
-    </Transition>
+    <AthleteReportTable :athlete="athletes[0]" :loading="loading" />
   </main>
 </template>
