@@ -10,7 +10,7 @@ defineProps<{
 </script>
 <template>
     <Transition name="fade" :appear="true" v-if="!loading && athlete">
-        <section class="grid gap-16">
+        <section class="grid gap-1 overflow-x-scroll">
             <table class="w-full table-auto text-xs">
                 <tbody>
                     <tr class="bg-black text-white">
