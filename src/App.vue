@@ -13,7 +13,7 @@ const { loading, athletes } = useGetAthletes();
       <Transition name="fade" :appear="true">
         <div>
           <img src="@/assets/logo.png" alt="SR Insights Logo" class="h-16">
-          <h1 class="text-lg font-light">Academic Fit Report</h1>
+          <h1 class="text-[14px]/[14px]">Academic Fit Report</h1>
         </div>
       </Transition>
     </header>
