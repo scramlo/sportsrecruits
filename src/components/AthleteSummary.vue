@@ -49,13 +49,15 @@ function getColorByAlphabetChunk(name: Athlete['name']) {
 </script>
 <template>
     <Transition name="fade" :appear="true" v-if="!loading && athlete">
-        <div class="flex flex-col lg:flex-row gap-4 items-center lg:items-start">
+        <div class="flex flex-col lg:flex-row gap-4 items-center">
             <!-- circle image thumbnail -->
             <div class="flex items-center h-full">
-                <div :style="{ backgroundColor: getColorByAlphabetChunk(athlete.name) }"
+                <div v-if="!athlete.profile_image" :style="{ backgroundColor: getColorByAlphabetChunk(athlete.name) }"
                     class="rounded-full flex justify-center items-center text-3xl overflow-hidden h-24 w-24">
-                    <span v-if="!athlete.profile_image">{{ getInitials(athlete.name) }}</span>
-                    <img v-else :src="athlete.profile_image" :alt="`${athlete.name} Profile Image`">
+                    <span>{{ getInitials(athlete.name) }}</span>
+                </div>
+                <div v-else class="rounded-full flex justify-center items-center text-3xl overflow-hidden h-24 w-24">
+                    <img :src="athlete.profile_image" :alt="`${athlete.name} Profile Image`">
                 </div>
             </div>
             <!-- player meta data -->
@@ -82,9 +84,9 @@ function getColorByAlphabetChunk(name: Athlete['name']) {
     </Transition>
     <Transition name="fade" :appear="true" v-else>
         <!-- Skeleton Loader -->
-        <div class="flex flex-col lg:flex-row gap-4 items-center lg:items-start animate-pulse">
+        <div class="flex flex-col lg:flex-row gap-4 items-center animate-pulse">
             <div class="flex items-center h-full">
-                <div class="rounded-full flex justify-center items-center overflow-hidden h-32 w-32">
+                <div class="rounded-full flex justify-center items-center overflow-hidden h-24 w-24">
                     <div class="bg-slate-300 h-full w-full" />
                 </div>
             </div>
