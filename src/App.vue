@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import useGetAthletes from '@/composables/useGetAthletes';
-import AthleteSummary from './components/AthleteSummary.vue';
-import AthleteReportTable from './components/AthleteReportTable.vue';
+import AthleteSummary from '@/components/AthleteSummary.vue';
+import AthleteReportTable from '@/components/AthleteReport/AthleteReportTable.vue';
 
 const { loading, athletes } = useGetAthletes();
 </script>

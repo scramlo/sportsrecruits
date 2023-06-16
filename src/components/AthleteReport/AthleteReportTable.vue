@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Athlete, Report } from '@/types';
-import UITableLoader from './ui/UITableLoader.vue';
-import AthleteReportRow from './_AthleteReportRow.vue';
+import type { Athlete } from '@/types';
+import UITableLoader from '@/components/ui/UITableLoader.vue';
+import AthleteReportRow from '@/components/AthleteReport/_AthleteReportRow.vue';
 
 defineProps<{
     athlete: Athlete;

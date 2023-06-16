@@ -10,8 +10,6 @@ function getGpaColor(gpa: Athlete['gpa'], report: Report) {
     const playerGpa = gpa;
     const schoolGpa = report.gpa['50%'];
 
-    console.log('difference', schoolGpa - playerGpa);
-
     /* 
     - school gpa above the player's gpa by more than 0.10 color is #d7737d
     - school gpa above the player's gpa by up to 0.10 color is #c194b5
