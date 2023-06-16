@@ -49,7 +49,7 @@ function getColorByAlphabetChunk(name: Athlete['name']) {
 </script>
 <template>
     <Transition name="fade" :appear="true" v-if="!loading && athlete">
-        <div class="flex flex-col md:flex-row gap-4 items-center md:items-start">
+        <div class="flex flex-col lg:flex-row gap-4 items-center lg:items-start">
             <!-- circle image thumbnail -->
             <div class="flex items-center h-full">
                 <div :style="{ backgroundColor: getColorByAlphabetChunk(athlete.name) }"
@@ -61,7 +61,7 @@ function getColorByAlphabetChunk(name: Athlete['name']) {
             <!-- player meta data -->
             <div class="grid grid-cols-2 gap-1">
                 <!-- row 1 player name -->
-                <div class="text-center md:text-start col-span-2 text-[#09b4ff] text-xl font-bold">{{ athlete.name }}</div>
+                <div class="text-center lg:text-start col-span-2 text-[#09b4ff] text-xl font-bold">{{ athlete.name }}</div>
                 <!-- row 2 sport and high school -->
                 <div class="col-span-2 grid grid-cols-2">
                     <div><span class="font-bold">Sport: </span>{{ athlete.sport }}</div>
