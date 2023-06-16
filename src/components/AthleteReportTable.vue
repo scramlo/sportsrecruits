@@ -18,22 +18,23 @@ function getGpaColor(gpa: Athlete['gpa'], report: Report) {
     - school gpa under the player's gpa by more than 0.10 color is #75ace5
     */
 
-    if (schoolGpa - playerGpa > 0.1) {
+    if ((schoolGpa - playerGpa) > 0.1) {
         return '#d7737d';
-    } else if (schoolGpa - playerGpa <= 0.1 && schoolGpa - playerGpa > 0) {
+    } else if ((schoolGpa - playerGpa) <= 0.1) {
         return '#c194b5';
     } else if (schoolGpa === playerGpa) {
         return '#b4a7d6';
-    } else if (playerGpa - schoolGpa < 0.1 && playerGpa - schoolGpa > 0) {
+    } else if ((playerGpa - schoolGpa) < 0.1) {
         return '#a6a8da';
-    } else {
+    } else if ((playerGpa - schoolGpa) > 0.1) {
         return '#75ace5';
     }
+    return 'transparent';
 }
 </script>
 <template>
-    <section>
-        <table class="w-full table-auto text-[9px]/[9px]" v-if="!loading && athlete">
+    <section v-if="!loading && athlete" class="grid gap-16">
+        <table class="w-full table-auto text-[9px]/[9px]">
             <tbody>
                 <tr class="bg-black text-white">
                     <th>School Name</th>
@@ -44,7 +45,7 @@ function getGpaColor(gpa: Athlete['gpa'], report: Report) {
                         <br>
                         <span class="text-[8px]/[8px] font-normal">(DI NCAA)
                             <br>
-                            (DII & DIlI Hero Sports)
+                            (DII & DIII Hero Sports)
                         </span>
                     </th>
                     <th colspan="5">GPA**</th>
@@ -67,7 +68,7 @@ function getGpaColor(gpa: Athlete['gpa'], report: Report) {
                         </span>
                     </th>
                 </tr>
-                <tr class="bg-black text-white">
+                <tr class="text-white -translate-y-[10px]">
                     <th></th>
                     <th></th>
                     <th></th>
@@ -99,23 +100,23 @@ function getGpaColor(gpa: Athlete['gpa'], report: Report) {
                 </tr>
             </tbody>
         </table>
+        <div>
+            <p class="text-[10px]/[10px]">*Rankings for Division I schools based on NCAA data (www.ncaa.com) and rankings
+                for
+                Division
+                II
+                &amp; III schools are based on data from Hero Sports (www.herosports.com/rankings)</p>
+            <p class="text-[10px]/[10px]">** GPA is based on SportsRecruits members who have shown interest in (favorited)
+                the
+                school
+                and
+                have provided their
+                GPA on their profile</p>
+            <p class="text-[10px]/[10px]">***SAT and ACT scores based on national data provided by the National Center of
+                Education
+                Statistics- https://nces.ed.gov/ipeds/</p>
+        </div>
     </section>
-    <div>
-        <p class="text-[10px]/[10px]">*Rankings for Division I schools based on NCAA data (www.ncaa.com) and rankings
-            for
-            Division
-            II
-            &amp; III schools are based on data from Hero Sports (www.herosports.com/rankings)</p>
-        <p class="text-[10px]/[10px]">** GPA is based on SportsRecruits members who have shown interest in (favorited)
-            the
-            school
-            and
-            have provided their
-            GPA on their profile</p>
-        <p class="text-[10px]/[10px]">***SAT and ACT scores based on national data provided by the National Center of
-            Education
-            Statistics- https://nces.ed.gov/ipeds/</p>
-    </div>
 </template>
 
 <style scoped>

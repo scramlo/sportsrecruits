@@ -54,26 +54,26 @@ function getInitials(name: string) {
         <div class="flex gap-4 animate-pulse">
             <div class="flex items-center h-full">
                 <div class="rounded-full flex justify-center items-center overflow-hidden h-32 w-32">
-                    <div class="bg-slate-700 h-full w-full"></div>
+                    <div class="bg-slate-300 h-full w-full" />
                 </div>
             </div>
             <div class="grid grid-cols-2 gap-1 w-96">
                 <!-- row 1 player name -->
-                <div class="col-span-2 bg-slate-700 rounded h-6 w-full" />
+                <div class="col-span-2 bg-slate-300 rounded h-6 w-full" />
                 <!-- row 2 sport and high school -->
                 <div class="col-span-2 grid grid-cols-2 gap-3">
-                    <div class="bg-slate-700 rounded h-4 w-full" />
-                    <div class="bg-slate-700 rounded h-4 w-full" />
+                    <div class="bg-slate-300 rounded h-4 w-full" />
+                    <div class="bg-slate-300 rounded h-4 w-full" />
                 </div>
                 <!-- row 3 class and gpa -->
                 <div class="col-span-2 grid grid-cols-2 gap-3">
-                    <div class="bg-slate-700 rounded h-4 w-full" />
-                    <div class="bg-slate-700 rounded h-4 w-full" />
+                    <div class="bg-slate-300 rounded h-4 w-full" />
+                    <div class="bg-slate-300 rounded h-4 w-full" />
                 </div>
                 <!-- row 4 club and desired major -->
                 <div class="col-span-2 grid grid-cols-2 gap-3">
-                    <div class="bg-slate-700 rounded h-4 w-full" />
-                    <div class="bg-slate-700 rounded h-4 w-full" />
+                    <div class="bg-slate-300 rounded h-4 w-full" />
+                    <div class="bg-slate-300 rounded h-4 w-full" />
                 </div>
             </div>
         </div>
