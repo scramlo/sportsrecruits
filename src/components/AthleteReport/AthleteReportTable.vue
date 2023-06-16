@@ -13,7 +13,7 @@ defineProps<{
         <section class="grid gap-1 overflow-x-scroll">
             <table class="w-full table-auto text-xs">
                 <tbody>
-                    <tr class="bg-black text-white">
+                    <tr>
                         <th>School Name</th>
                         <th>Athletic Div</th>
                         <th>Conference</th>
@@ -45,7 +45,7 @@ defineProps<{
                             </span>
                         </th>
                     </tr>
-                    <tr class="text-white -translate-y-[17px]">
+                    <tr class="-translate-y-[17px]">
                         <th></th>
                         <th></th>
                         <th></th>
@@ -87,3 +87,25 @@ defineProps<{
         <UITableLoader :cols="33" />
     </Transition>
 </template>
+
+<style scoped>
+:deep(th:first-child),
+:deep(td:first-child) {
+    position: sticky;
+    left: 0;
+}
+
+/* alternate colors between tds */
+:deep(tr:nth-child(even) td) {
+    background-color: #e7f0fe;
+}
+
+:deep(tr:nth-child(odd) td) {
+    background-color: white;
+}
+
+tr th {
+    background-color: black;
+    color: white;
+}
+</style>

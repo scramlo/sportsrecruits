@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-    <tr v-for="report in athlete.report" :key="report.school" class="striped -translate-y-[18px]">
+    <tr v-for="report in athlete.report" :key="report.school" class="-translate-y-[18px]">
         <td>{{ report.school }}</td>
         <td>{{ report.division }}</td>
         <td>{{ report.conference }}</td>
@@ -27,9 +27,5 @@ defineProps<{
 <style scoped>
 table td {
     padding: 0.5rem;
-}
-
-table tr:nth-child(even).striped {
-    background-color: #e7f0fe;
 }
 </style>
