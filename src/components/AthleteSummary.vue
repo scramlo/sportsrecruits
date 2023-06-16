@@ -82,13 +82,13 @@ function getColorByAlphabetChunk(name: Athlete['name']) {
     </Transition>
     <Transition name="fade" :appear="true" v-else>
         <!-- Skeleton Loader -->
-        <div class="flex gap-4 animate-pulse">
+        <div class="flex flex-col lg:flex-row gap-4 items-center lg:items-start animate-pulse">
             <div class="flex items-center h-full">
                 <div class="rounded-full flex justify-center items-center overflow-hidden h-32 w-32">
                     <div class="bg-slate-300 h-full w-full" />
                 </div>
             </div>
-            <div class="grid grid-cols-2 gap-1 w-96">
+            <div class="grid grid-cols-2 gap-1 w-60 lg:w-96">
                 <!-- row 1 player name -->
                 <div class="col-span-2 bg-slate-300 rounded h-6 w-full" />
                 <!-- row 2 sport and high school -->
