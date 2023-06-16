@@ -13,7 +13,7 @@ const { loading, athletes } = useGetAthletes();
       <AthleteSummary :athlete="athletes[0]" :loading="loading" />
       <div>
         <img src="@/assets/logo.png" alt="SR Insights Logo" class="h-16">
-        <h1 class="text-lg">Academic Fit Report</h1>
+        <h1 class="text-lg text-right">Academic Fit Report</h1>
       </div>
     </header>
     <AthleteReportTable :athlete="athletes[0]" :loading="loading" />

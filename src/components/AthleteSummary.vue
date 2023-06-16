@@ -16,13 +16,44 @@ function getInitials(name: string) {
     // return the first letter of each name, capitalized
     return `${first[0].toUpperCase()}${last[0].toUpperCase()}`;
 }
+
+function getColorByAlphabetChunk(name: Athlete['name']) {
+    const alphabetChunks = [
+        ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'],
+        ['n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
+        ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'],
+        ['n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],
+        ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'],
+        ['q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    ];
+
+    const colors = [
+        "#f1603c",
+        "#6082fa",
+        "#827cb8",
+        "#0097a4",
+        "#ffe066",
+        "#ffa94d"
+    ];
+
+    const string = name.toLowerCase();
+
+    for (let i = 0; i < alphabetChunks.length; i++) {
+        if (alphabetChunks[i].includes(string.charAt(0))) {
+            return colors[i];
+        }
+    }
+
+    return 'transparent';
+}
 </script>
 <template>
     <Transition name="fade" :appear="true" v-if="!loading && athlete">
         <div class="flex gap-4">
             <!-- circle image thumbnail -->
             <div class="flex items-center h-full">
-                <div class="bg-gray-200 rounded-full flex justify-center items-center text-3xl overflow-hidden h-24 w-24">
+                <div :style="{ backgroundColor: getColorByAlphabetChunk(athlete.name) }"
+                    class="rounded-full flex justify-center items-center text-3xl overflow-hidden h-24 w-24">
                     <span v-if="!athlete.profile_image">{{ getInitials(athlete.name) }}</span>
                     <img v-else :src="athlete.profile_image" :alt="`${athlete.name} Profile Image`">
                 </div>
